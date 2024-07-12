@@ -1,0 +1,152 @@
+form {
+    width: 600px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 1px 2px 9px #fbbcd2;
+    border-radius: 5px;
+}
+.inputFormBlock{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.inputBlock{
+    width: 100%;
+    padding: 5px 8px;
+    margin: 8px;
+
+}
+form input, form select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+form select{
+    width: 100%;
+}
+form input, form select ,textarea:focus{
+    outline: none;
+}
+.addressText{
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.foodChoice{
+    display: block;
+    padding: 5px 8px;
+    margin: 8px;
+}
+.choise{
+    margin-top: 10px;
+}
+.choise input[type="checkbox"]  {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+  }
+  
+  .choise label {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .choise label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: #ffffff;
+    border: 2px solid #E91E63;
+    box-shadow: 0 1px 2px #FCE4EC, inset 0px -10px 10px -12px #F8BBD0;
+    padding: 7px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 15px;
+  }
+  .choiceIn{
+    margin-top: 15px;
+  }
+  .choise input:checked + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    width: 4px;
+    height: 8px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .choise input:checked + label::before {
+    background-color: #E91E63;
+  }
+  .submitBtn{
+    background: #E91E63;
+    border: 0;
+    padding: 10px 25px;
+    border-radius: 5px;
+    color: #fff;
+    margin: 20px 15px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .formHead{
+    margin: 0 0 20px 15px;
+  }
+  .txtGradiant{
+        background: linear-gradient(to right, #EC407A 30%, #FFC107 70%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+  }
+  .tableHeading{
+    text-align: center;
+    margin-top: 50px;
+  }
+form label {
+    font-weight: bold;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+table th {
+    background-color: #E91E63;
+    color: #fff;
+    font-weight: 500;
+}
+.tableBlock{
+  width: 90%;
+  margin: 0 auto;
+  overflow: auto;
+
+}
+@media only screen and (max-width: 600px) {
+  form {
+    width: 80%;
+  }
+  .inputFormBlock{
+    flex-direction: column;
+  }
+  .inputBlock{
+    margin: 10px 0;
+    padding: 0;
+  }
+  .foodChoice{
+    margin: 10px 0;
+  }
+}

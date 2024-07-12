@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pagination using DOM</title>
+    </head>
+    <body>
+        <script>
+            // Take Json data by API 
+
+            let xhr = new XMLHttpRequest;
+            xhr.open("GET",'https://raw.githubusercontent.com/Rajavasanthan/jsondata/master/pagenation.json',true);
+            xhr.onload = function(){
+                if(200<=xhr.status<=300){
+                    let response = JSON.parse(xhr.responseText);
+
+                    // create Html element in DOM
+
+                let paginationBlock = document.createElement("div");
+                paginationBlock.style.cssText ="box-shadow: 1px 2px 7px #e0e0e0;width: 80%; margin: 0 auto;"
+                let listContainer = document.createElement("div")
+                let list = document.createElement("div");
+                list.style.cssText = "width:100%;display:flex;align-items:center;border-bottom:1px solid #ccc;"
+                let id = document.createElement("div");
+                id.style.cssText = "width:10%;padding:10px 20px;background: #E91E63;color: #fff;";
+                id.innerText = "ID";
+                let name = document.createElement("div");
+                name.innerText = "NAME";
+                name.style.cssText ="width:40%;padding:10px 20px;background: #E91E63;color: #fff;";
+                let email = document.createElement("div");
+                email.innerText = "EMAIL";
+                email.style.cssText ="width:50%;padding:10px 20px;background: #E91E63;color: #fff;";
+                list.append(id,name,email);
+                paginationBlock.appendChild(list);                    
+
+                               
+               
+
+                // Pagination
+                let paginateDataObj = response;
+                let numberOfPage = Math.ceil(response.length/10);
+                let currentPage = 1;
+                paginate(1);
+                
+                let paginateNo =  document.createElement("div");
+                paginateNo.style.cssText = "display:flex;justify-content: center;margin-top: 30px;";
+                let prev = document.createElement("button");
+                prev.style.cssText= "background: white;border: 1px solid #ccc;padding: 5px 10px;cursor:pointer;"
+                prev.innerText = "Prev";
+                let middle = document.createElement("div");
+                let next = document.createElement("button");
+                next.style.cssText= "background: white;border: 1px solid #ccc;padding: 5px 10px;cursor:pointer;"
+                next.innerText = "Nxt";
+
+                function setActiveButton(pageNum) {
+                        let buttons = middle.querySelectorAll('button');
+                        buttons.forEach(function(button) {
+                            button.classList.remove('active');
+                        });
+                        
+                        let activeButton = middle.querySelector('button:nth-child(' + pageNum + ')');
+                        activeButton.classList.add('active');
+                }
+
+                
+                for(i=1;i<=numberOfPage;i++){
+                    let btn = document.createElement("button");
+                    btn.style.cssText= "background: white;border: 1px solid #ccc;padding: 5px 10px;cursor:pointer;"
+                    btn.innerText = i;
+                    btn.addEventListener("click",(function(pageNum) {
+                        return function() {
+                            paginate(pageNum);
+                            setActiveButton(pageNum);
+                        };
+                    })(i));
+                    middle.appendChild(btn);
+
+                }
+
+
+                next.addEventListener("click",function(){
+                    if(currentPage < numberOfPage){
+                        currentPage++;
+                        paginate(currentPage);
+                        setActiveButton(currentPage);
+                    }
+                    
+                });
+
+
+                prev.addEventListener("click", function(){
+                    if(currentPage > 1) {
+                        currentPage--;
+                        paginate(currentPage);
+                        setActiveButton(currentPage);
+                    }
+                });
+
+                 
+                function paginate(pageNumber) {
+                    
+                    currentPage = pageNumber;
+                    listContainer.innerHTML = '';
+                    let startIndex = (pageNumber - 1)*10;
+                    let endIndex = startIndex + 10;
+                    let paginateData = paginateDataObj.slice(startIndex,endIndex);
+                   
+                    for(i=0;i<paginateData.length;i++){
+                    
+                    let listItems = document.createElement("div");
+                    listItems.style.cssText = "width:100%;display:flex;align-items:center;border-bottom:1px solid #e91e63;"
+                    
+                    let id = document.createElement("div");
+                    id.style.cssText = "width:10%;padding:10px 20px;";            
+                    let name = document.createElement("div");            
+                    name.style.cssText ="width:40%;padding:10px 20px;";
+                    let email = document.createElement("div");            
+                    email.style.cssText ="width:50%;padding:10px 20px;";
+                    id.innerText = paginateData[i].id;
+                    name.innerText = paginateData[i].name;
+                    email.innerText = paginateData[i].email;
+                    listItems.append(id,name,email);
+                    listContainer.appendChild(listItems);                 
+
+                    }
+                }
+        
+                paginationBlock.appendChild(listContainer);
+                document.body.appendChild(paginationBlock);
+                document.body.appendChild(paginateNo);
+                paginateNo.append(prev,middle,next);
+                setActiveButton(currentPage);
+                }
+                else{
+                    console.log("The Response is Failed")
+                }
+            }
+            xhr.onerror = function(){
+                console.log("Error");
+            }
+            xhr.send();
+
+           
+        </script>
+          <style>
+            .active {
+                background-color: #E91E63 !important;
+                color: white;
+            }
+            button:hover{
+                background-color: #E91E63 !important;
+                color: white;
+            }
+        </style>
+    </body>
+</html>
