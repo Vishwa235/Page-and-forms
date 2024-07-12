@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form and Table</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="formBlock">
+            <form id="userForm">
+                <h1 class="txtGradiant formHead">Update Form</h1>
+                <div class="inputFormBlock">
+                    <div class="inputBlock">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="inputFormBlock">
+                    <div class="inputBlock">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inputFormBlock">
+                    <div class="inputBlock">
+                        <label for="address">Address:</label>
+                        <textarea class="addressText" id="address" name="address" rows="4" required></textarea>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="pincode">Pincode:</label>
+                        <input type="text" id="pincode" name="pincode" required>
+                    </div>                 
+                </div>
+                <div class="inputFormBlock">
+                    <div class="inputBlock">
+                        <label for="state">State:</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" required>
+                    </div>
+                </div>
+               
+                <div class="inputFormBlock foodChoice">
+                    <label for="food">Choice of Food (Select at least 2):</label>
+                    <div class="choiceIn">
+                        <div class="choise">
+                            <input type="checkbox" id="food1" name="food" value="pizza">
+                            <label for="food1">Pizza</label>
+                        </div>
+                        <div class="choise">
+                            <input type="checkbox" id="food2" name="food" value="burger">
+                            <label for="food2">Burger</label>
+                        </div>
+                        <div class="choise">
+                            <input type="checkbox" id="food3" name="food" value="pasta">
+                            <label for="food3">Pasta</label>
+                        </div>
+                        <div class="choise">
+                            <input type="checkbox" id="food4" name="food" value="salad">
+                            <label for="food4">Salad</label>
+                        </div>
+                        <div class="choise">
+                            <input type="checkbox" id="food5" name="food" value="sandwich">
+                            <label for="food5">Sandwich</label>
+                        </div>
+                    </div>
+                                 
+                   
+                </div>
+                <button class="submitBtn" type="submit">Submit</button>
+            </form>
+            <h1 class="tableHeading txtGradiant">Table Record</h1>
+            <div class="tableBlock">
+                <table id="userTable">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Food</th>
+                            <th>State</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    </tbody>
+                </table>
+            </div>
+          
+
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
